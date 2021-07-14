@@ -35,7 +35,8 @@ export class CdkStack extends cdk.Stack {
       "nm-static-react-distribution",
       {
         defaultBehavior: {origin: new origins.S3Origin(bucket),
-        viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS}
+        viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS},
+        webAclId: `arn:aws:wafv2:us-east-1:${process.env.AWS_ACCOUNT}:global/webacl/${process.env.WEB_ACL_ID}`
       }
     );
 
