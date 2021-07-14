@@ -1,0 +1,15 @@
+name: Deploy to AWS
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCOUNT: ${{ secrets.AWS_ACCOUNT }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Clean install dependencies
+        run: npm ci
